@@ -1,0 +1,202 @@
+{
+	"EventNotificationAlert": {
+		"ipAddress": "10.177.120.67",
+		"portNo": "443",
+		"protocol": "HTTPS",
+		"macAddress": "fc:9f:fd:bd:ee:9b",
+		"channelID": "1",
+		"dateTime": "2024-07-17T21:14:00-03:00",
+		"activePostCount": "1",
+		"eventType": "PeopleCounting",
+		"eventState": "active",
+		"eventDescription": "PeopleCounting alarm",
+		"channelName": "Ingreso Showroom RF",
+		"peopleCounting": {
+			"statisticalMethods": "timeRange",
+			"TimeRange": {
+				"startTime": "2024-07-17T21:13:00-03:00",
+				"endTime": "2024-07-17T21:14:00-03:00"
+			},
+			"enter": "0",
+			"exit": "0",
+			"pass": "0",
+			"duplicatePeople": "0",
+			"FlowStatisticsList": {
+				"FlowStatistics": {
+					"countingLineID": "1",
+					"pass": "0",
+					"movingDirectionList": {
+						"MovingDirection": [
+							{
+								"countingLineSegmentID": "1",
+								"count": "0"
+							},
+							{
+								"countingLineSegmentID": "2",
+								"count": "0"
+							},
+							{
+								"countingLineSegmentID": "3",
+								"count": "0"
+							}
+						]
+					}
+				}
+			},
+			"countingSceneMode": "entrance",
+			"deDuplicateEnter": "0",
+			"deDuplicateExit": "0"
+		},
+		"FaceExpressionList": {
+			"FaceExpression": [
+				{
+					"value": "surprised",
+					"count": "0"
+				},
+				{
+					"value": "panic",
+					"count": "0"
+				},
+				{
+					"value": "disgusted",
+					"count": "0"
+				},
+				{
+					"value": "happy",
+					"count": "0"
+				},
+				{
+					"value": "sad",
+					"count": "0"
+				},
+				{
+					"value": "angry",
+					"count": "0"
+				},
+				{
+					"value": "poker-faced",
+					"count": "0"
+				},
+				{
+					"value": "unknown",
+					"count": "0"
+				}
+			]
+		},
+		"GenderList": {
+			"Gender": [
+				{
+					"value": "male",
+					"count": "0"
+				},
+				{
+					"value": "female",
+					"count": "0"
+				},
+				{
+					"value": "unknown",
+					"count": "0"
+				}
+			]
+		},
+		"MaskList": {
+			"Mask": [
+				{
+					"value": "no",
+					"count": "0"
+				},
+				{
+					"value": "yes",
+					"count": "0"
+				},
+				{
+					"value": "unknown",
+					"count": "0"
+				}
+			]
+		},
+		"AgeGroupList": {
+			"AgeGroup": [
+				{
+					"value": "child",
+					"count": "0"
+				},
+				{
+					"value": "kid",
+					"count": "0"
+				},
+				{
+					"value": "teenager",
+					"count": "0"
+				},
+				{
+					"value": "young",
+					"count": "0"
+				},
+				{
+					"value": "prime",
+					"count": "0"
+				},
+				{
+					"value": "middle",
+					"count": "0"
+				},
+				{
+					"value": "middleAged",
+					"count": "0"
+				},
+				{
+					"value": "old",
+					"count": "0"
+				},
+				{
+					"value": "unknown",
+					"count": "0"
+				}
+			]
+		},
+		"GlassList": {
+			"Glass": [
+				{
+					"value": "no",
+					"count": "0"
+				},
+				{
+					"value": "yes",
+					"count": "0"
+				},
+				{
+					"value": "sunglasses",
+					"count": "0"
+				},
+				{
+					"value": "unknown",
+					"count": "0"
+				}
+			]
+		},
+		"HatList": {
+			"Hat": [
+				{
+					"value": "no",
+					"count": "0"
+				},
+				{
+					"value": "yes",
+					"count": "0"
+				},
+				{
+					"value": "unknown",
+					"count": "0"
+				},
+				{
+					"value": "helmet",
+					"count": "0"
+				}
+			]
+		},
+		"isDataRetransmission": "false",
+		"_xmlns": "http://www.isapi.org/ver20/XMLSchema",
+		"_version": "2.0"
+	}
+}
