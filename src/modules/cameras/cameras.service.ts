@@ -1,15 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCameraDto } from './dto/create-camera.dto';
 import { UpdateCameraDto } from './dto/update-camera.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Camera } from './entities/camera.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class CamerasService {
+  constructor(
+    @InjectRepository(Camera)
+    private camerasRepository: Repository<Camera>,
+  ) {}
+
   create(createCameraDto: CreateCameraDto) {
-    return 'This action adds a new camera';
+    try {
+      const camera = this.camerasRepository.create(createCameraDto);
+      return this.camerasRepository.save(camera);
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   findAll() {
-    return `This action returns all cameras`;
+    return this.camerasRepository.find();
   }
 
   findOne(id: number) {
@@ -17,6 +30,7 @@ export class CamerasService {
   }
 
   update(id: number, updateCameraDto: UpdateCameraDto) {
+    console.log(updateCameraDto);
     return `This action updates a #${id} camera`;
   }
 
