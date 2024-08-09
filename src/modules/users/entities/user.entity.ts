@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { CaptureRange } from 'src/modules/capture-range/entities/capture-range.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('users')
 export class User {
@@ -28,4 +35,8 @@ export class User {
 
   @Column({ type: 'timestamp' })
   updatedAt: Date;
+
+  @OneToOne(() => CaptureRange)
+  @JoinColumn({ name: 'captureRangeId' })
+  captureRange: CaptureRange;
 }

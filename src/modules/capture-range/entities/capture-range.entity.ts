@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Event } from 'src/modules/events/entities/event.entity';
+import { User } from 'src/modules/users/entities/user.entity';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('captureRanges')
 export class CaptureRange {
@@ -28,4 +36,10 @@ export class CaptureRange {
 
   @Column({ type: 'timestamp' })
   updatedAt: Date;
+
+  @OneToOne(() => User, (user) => user.captureRange)
+  user: User;
+
+  @OneToMany(() => Event, (event) => event.captureRange)
+  events: Event[];
 }

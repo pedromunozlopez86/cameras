@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Capture } from 'src/modules/captures/entities/capture.entity';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('cameras')
 export class Camera {
@@ -25,4 +26,7 @@ export class Camera {
 
   @Column({ type: 'timestamp' })
   updatedAt: Date;
+
+  @OneToOne(() => Capture, (capture) => capture.camera)
+  capture: Capture;
 }

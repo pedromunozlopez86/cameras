@@ -1,4 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Camera } from 'src/modules/cameras/entities/camera.entity';
+import { Event } from 'src/modules/events/entities/event.entity';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity('captures')
 export class Capture {
@@ -37,4 +46,11 @@ export class Capture {
 
   @Column({ type: 'timestamp' })
   updatedAt: Date;
+
+  @ManyToOne(() => Event, (event) => event.captures)
+  event: Event;
+
+  @OneToOne(() => Camera)
+  @JoinColumn({ name: 'cameraId' })
+  camera: Camera;
 }

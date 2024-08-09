@@ -11,7 +11,7 @@ import { UsersModule } from './modules/users/users.module';
 import { User } from './modules/users/entities/user.entity';
 import { CaptureRangeModule } from './modules/capture-range/capture-range.module';
 import { CaptureRange } from './modules/capture-range/entities/capture-range.entity';
-import { InputCameraModule } from './input-camera/input-camera.module';
+import { InputCameraModule } from './modules/input-camera/input-camera.module';
 
 @Module({
   imports: [
