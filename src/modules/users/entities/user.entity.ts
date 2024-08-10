@@ -33,7 +33,7 @@ export class User {
   @Column({ type: 'timestamp' })
   createdAt: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', nullable: true })
   updatedAt: Date;
 
   @OneToOne(() => CaptureRange)

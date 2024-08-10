@@ -44,7 +44,7 @@ export class Capture {
   @Column({ type: 'timestamp' })
   createdAt: Date;
 
-  @Column({ type: 'timestamp' })
+  @Column({ type: 'timestamp', nullable: true })
   updatedAt: Date;
 
   @ManyToOne(() => Event, (event) => event.captures)
