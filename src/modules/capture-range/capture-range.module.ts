@@ -8,5 +8,6 @@ import { CaptureRange } from './entities/capture-range.entity';
   imports: [TypeOrmModule.forFeature([CaptureRange])],
   controllers: [CaptureRangeController],
   providers: [CaptureRangeService],
+  exports: [CaptureRangeService],
 })
 export class CaptureRangeModule {}

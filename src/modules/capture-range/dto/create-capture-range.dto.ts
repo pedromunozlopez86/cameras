@@ -1,4 +1,4 @@
-import { ApiProperty } from '@nestjs/swagger';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsDateString, IsNumber } from 'class-validator';
 import { CommonDto } from 'src/common/common.dto';
 
@@ -7,23 +7,23 @@ export class CreateCaptureRangeDto extends CommonDto {
   @IsNumber()
   rangeTypeId: number;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   @IsDateString()
-  onlyDay: Date;
+  onlyDay?: Date;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   @IsDateString()
-  weekStartDate: Date;
+  weekStartDate?: Date;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   @IsDateString()
-  weekEndDate: Date;
+  weekEndDate?: Date;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   @IsDateString()
-  monthStartDate: Date;
+  monthStartDate?: Date;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
   @IsDateString()
-  monthEndDate: Date;
+  monthEndDate?: Date;
 }

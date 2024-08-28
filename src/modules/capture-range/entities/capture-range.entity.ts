@@ -16,19 +16,19 @@ export class CaptureRange {
   @Column({ type: 'int' })
   rangeTypeId: number;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: true })
   onlyDay: Date;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: true })
   weekStartDate: Date;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: true })
   weekEndDate: Date;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: true })
   monthStartDate: Date;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: true })
   monthEndDate: Date;
 
   @Column({ type: 'timestamp' })

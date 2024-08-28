@@ -9,8 +9,9 @@ import {
   IsString,
   ValidateNested,
 } from 'class-validator';
-import { PeopleCountingDto } from './people-counting.dto';
 import { Type } from 'class-transformer';
+import { PeopleCountingDto } from './people-counting.dto';
+import { CatalogueValuesDto } from 'src/common/catalogue-value.dto';
 
 export class EventNotificationAlert {
   @ApiProperty()
@@ -65,31 +66,31 @@ export class EventNotificationAlert {
 
   @ApiProperty()
   @IsNotEmptyObject()
-  FaceExpressionList: any;
+  FaceExpressionList: { FaceExpression: CatalogueValuesDto[] };
 
   @ApiProperty()
   @IsNotEmptyObject()
-  GenderList: any;
+  GenderList: CatalogueValuesDto[];
 
   @ApiProperty()
   @IsNotEmptyObject()
-  MaskList: any;
+  MaskList: CatalogueValuesDto[];
 
   @ApiProperty()
   @IsNotEmptyObject()
-  AgeGroupList: any;
+  AgeGroupList: CatalogueValuesDto[];
 
   @ApiProperty()
   @IsNotEmptyObject()
-  GlassList: any;
+  GlassList: CatalogueValuesDto[];
 
   @ApiProperty()
   @IsNotEmptyObject()
-  HatList: any;
+  HatList: CatalogueValuesDto[];
 
   @ApiProperty()
   @IsBooleanString()
-  isDataRetransmission: boolean;
+  isDataRetransmission: string;
 
   @ApiProperty()
   @IsNotEmpty()

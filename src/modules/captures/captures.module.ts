@@ -8,5 +8,6 @@ import { Capture } from './entities/capture.entity';
   imports: [TypeOrmModule.forFeature([Capture])],
   controllers: [CapturesController],
   providers: [CapturesService],
+  exports: [CapturesService],
 })
 export class CapturesModule {}

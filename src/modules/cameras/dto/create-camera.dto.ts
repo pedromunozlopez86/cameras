@@ -22,8 +22,4 @@ export class CreateCameraDto extends CommonDto {
   @ApiProperty()
   @IsString()
   channelId: string;
-
-  @ApiProperty()
-  @IsNumber()
-  port: number;
 }
