@@ -70,7 +70,7 @@ export class EventNotificationAlert {
 
   @ApiProperty()
   @IsNotEmptyObject()
-  GenderList: CatalogueValuesDto[];
+  GenderList: { Gender: CatalogueValuesDto[] };
 
   @ApiProperty()
   @IsNotEmptyObject()

@@ -25,9 +25,8 @@ export class InputCameraService {
     const FaceValue = await this.validateFaceExpression(
       EventNotificationAlert.FaceExpressionList.FaceExpression,
     );
-
     const genderValue = await this.validateGenderType(
-      EventNotificationAlert.GenderList,
+      EventNotificationAlert.GenderList.Gender,
     );
 
     const genderValueTosave = GenderValue[genderValue];
