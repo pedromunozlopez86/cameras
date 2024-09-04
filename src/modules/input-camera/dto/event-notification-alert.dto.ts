@@ -78,7 +78,7 @@ export class EventNotificationAlert {
 
   @ApiProperty()
   @IsNotEmptyObject()
-  AgeGroupList: CatalogueValuesDto[];
+  AgeGroupList: { AgeGroup: CatalogueValuesDto[] };
 
   @ApiProperty()
   @IsNotEmptyObject()

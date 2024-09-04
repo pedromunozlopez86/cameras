@@ -1,6 +1,6 @@
-enum GenderValue {
+enum GenderValueEnum {
   male = 0,
   female = 1,
   unknown = 2,
 }
-export default GenderValue;
+export default GenderValueEnum;
