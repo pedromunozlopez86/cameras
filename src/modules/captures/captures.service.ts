@@ -11,7 +11,7 @@ export class CapturesService {
     @InjectRepository(Capture)
     private capturesRepository: Repository<Capture>,
   ) {}
-  create(createCaptureDto: CreateCaptureDto) {
+  async create(createCaptureDto: CreateCaptureDto) {
     try {
       const capture = this.capturesRepository.create(createCaptureDto);
       return this.capturesRepository.save(capture);
@@ -30,5 +30,9 @@ export class CapturesService {
 
   update(id: number, updateCaptureDto: UpdateCaptureDto) {
     return this.capturesRepository.update(id, updateCaptureDto);
+  }
+
+  async countPersonsByFaces() {
+    return true;
   }
 }

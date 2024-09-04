@@ -7,6 +7,7 @@ import { EventsService } from '../events/events.service';
 import { UsersService } from '../users/users.service';
 import { CatalogueValuesDto } from 'src/common/catalogue-value.dto';
 import FaceExpressionsEnum from 'src/common/face-expressions.enum';
+import GenderValue from 'src/common/gender.enum';
 
 @Injectable()
 export class InputCameraService {
@@ -24,6 +25,12 @@ export class InputCameraService {
     const FaceValue = await this.validateFaceExpression(
       EventNotificationAlert.FaceExpressionList.FaceExpression,
     );
+
+    const genderValue = await this.validateGenderType(
+      EventNotificationAlert.GenderList,
+    );
+
+    const genderValueTosave = GenderValue[genderValue];
 
     const faceExpressionIdToSave = FaceExpressionsEnum[FaceValue];
     try {
@@ -54,8 +61,8 @@ export class InputCameraService {
         peopleCount: EventNotificationAlert.activePostCount,
         faceExpressionId: faceExpressionIdToSave,
         ageGroupId: 1,
-        genderId: 1,
-        mask: true,
+        genderId: genderValueTosave,
+        mask: false,
         glassesId: 1,
         hatId: 1,
         cameraId: camerasResponse.id,
@@ -81,6 +88,14 @@ export class InputCameraService {
     );
     const maxCountValue = faceExpressions.find(
       (expression) => +expression.count == maxCount,
+    );
+    return maxCountValue?.value || 'unknown';
+  }
+
+  private async validateGenderType(genderTypes: CatalogueValuesDto[]) {
+    const maxCount = Math.max(...genderTypes.map((gender) => +gender.count));
+    const maxCountValue = genderTypes.find(
+      (gender) => +gender.count == maxCount,
     );
     return maxCountValue?.value || 'unknown';
   }
