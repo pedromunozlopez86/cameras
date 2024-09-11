@@ -44,10 +44,8 @@ export class CapturesService {
         'End date should be greater than start date',
       );
     }
-
     try {
       if (!range.startDate && !range.endDate) {
-        console.log('if 1', faceExpressionId);
         const countWithoutDate = await this.capturesRepository.count({
           where: {
             faceExpressionId,
@@ -59,7 +57,6 @@ export class CapturesService {
           count: countWithoutDate,
         };
       } else if (range.startDate && range.endDate) {
-        console.log('if 2', range);
         const countWithoutFace = await this.capturesRepository.count({
           where: {
             timestamp: Between(
