@@ -16,8 +16,8 @@ async function bootstrap() {
 
   app.use(new XmlParserMiddleware().use);
   const config = new DocumentBuilder()
-    .setTitle('API Documentation')
-    .setDescription('The API description')
+    .setTitle('Cam API Documentation')
+    .setDescription('The Camera capture API description')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);

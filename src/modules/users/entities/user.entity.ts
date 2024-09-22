@@ -18,16 +18,16 @@ export class User {
   @Column({ type: 'varchar', length: 50 })
   surname: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column({ type: 'varchar', length: 50, unique: true })
   email: string;
 
-  @Column({ type: 'varchar', length: 50 })
+  @Column({ type: 'varchar', length: 200 })
   password: string;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: true })
   userTypeId: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: true })
   captureRangeId: number;
 
   @Column({ type: 'timestamp' })

@@ -12,6 +12,7 @@ import { User } from './modules/users/entities/user.entity';
 import { CaptureRangeModule } from './modules/capture-range/capture-range.module';
 import { CaptureRange } from './modules/capture-range/entities/capture-range.entity';
 import { InputCameraModule } from './modules/input-camera/input-camera.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -61,6 +62,7 @@ CCjkBYM+DVUmGwH4etvWMciFw3dH5C1JUbdkjjoqTyfkD4I0xw==
         synchronize: true,
       }),
     }),
+    AuthModule,
     CamerasModule,
     EventsModule,
     CapturesModule,

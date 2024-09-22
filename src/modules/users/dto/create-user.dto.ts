@@ -1,5 +1,11 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNumber, IsString, IsStrongPassword } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import {
+  IsEmail,
+  IsNumber,
+  IsOptional,
+  IsString,
+  IsStrongPassword,
+} from 'class-validator';
 import { CommonDto } from 'src/common/common.dto';
 
 export class CreateUserDto extends CommonDto {
@@ -25,11 +31,13 @@ export class CreateUserDto extends CommonDto {
   })
   password: string;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
+  @IsOptional()
   @IsNumber()
-  userTypeId: number;
+  userTypeId?: number;
 
-  @ApiProperty()
+  @ApiPropertyOptional()
+  @IsOptional()
   @IsNumber()
-  captureRangeId: number;
+  captureRangeId?: number;
 }
