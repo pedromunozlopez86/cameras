@@ -7,6 +7,7 @@ import { XmlParserMiddleware } from './middleware/ xml-parser.middleware';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors({ allowedHeaders: '*' });
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
