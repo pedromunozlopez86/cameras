@@ -7,6 +7,7 @@ import { Between, Repository } from 'typeorm';
 import FaceExpressionsEnum from 'src/common/face-expressions.enum';
 import GenderValue from 'src/common/gender.enum';
 import { DateRangeDto } from './dto/date-range.dto';
+import AgeGroupEnum from 'src/common/age-group.enum';
 
 @Injectable()
 export class CapturesService {
@@ -112,5 +113,51 @@ export class CapturesService {
     } catch (error) {
       throw new Error(error.message);
     }
+  }
+
+  async getAllCounts() {
+    const genderCounts = await this.capturesRepository.query(`
+    select "genderId" as "attributeId", count(*) as count
+      from captures c 
+      group by "genderId"
+    `);
+
+    const genderCountsWithEnum = genderCounts.map((count) => ({
+      ...count,
+      attributeId: GenderValue[count.attributeId],
+    }));
+
+    const faceExpressionCounts = await this.capturesRepository.query(`
+    select "faceExpressionId" as "attributeId" , count(*) as count
+      from captures c 
+      group by "faceExpressionId"
+    `);
+
+    const faceExpressionCountsWithEnum = faceExpressionCounts.map((count) => ({
+      ...count,
+      attributeId: FaceExpressionsEnum[count.attributeId],
+    }));
+
+    const agesCounts = await this.capturesRepository.query(`
+    select "ageGroupId" as "attributeId" , count(*) as count
+      from captures c 
+      group by "ageGroupId"
+    `);
+
+    const agesCountsWithEnum = agesCounts.map((count) => ({
+      ...count,
+      attributeId: AgeGroupEnum[count.attributeId],
+    }));
+    return {
+      genderCountsWithEnum,
+      faceExpressionCountsWithEnum,
+      agesCountsWithEnum,
+    };
+  }
+
+  async getTotals() {
+    const totalCaptures = await this.capturesRepository.count();
+
+    return { totalCaptures };
   }
 }

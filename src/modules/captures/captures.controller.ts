@@ -37,6 +37,20 @@ export class CapturesController {
 
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
+  @Get('all-counts')
+  getAllCounts() {
+    return this.capturesService.getAllCounts();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @Get('totals')
+  getTotals() {
+    return this.capturesService.getTotals();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.capturesService.findOne(+id);
