@@ -155,9 +155,93 @@ export class CapturesService {
     };
   }
 
+  async getAllCountsByDateRange(range: DateRangeDto) {
+    if (range.endDate < range.startDate) {
+      throw new BadRequestException(
+        'End date should be greater than start date',
+      );
+    }
+    try {
+      const genderCounts = await this.capturesRepository.query(
+        `
+      select "genderId" as "attributeId", count(*) as count
+        from captures c 
+        where c.timestamp between $1 and $2
+        group by "genderId"
+      `,
+        [new Date(range.startDate), new Date(range.endDate)],
+      );
+
+      const genderCountsWithEnum = genderCounts.map((count) => ({
+        ...count,
+        attributeId: GenderValue[count.attributeId],
+      }));
+
+      const faceExpressionCounts = await this.capturesRepository.query(
+        `
+      select "faceExpressionId" as "attributeId" , count(*) as count
+        from captures c 
+        where c.timestamp between $1 and $2
+        group by "faceExpressionId"
+      `,
+        [new Date(range.startDate), new Date(range.endDate)],
+      );
+      const faceExpressionCountsWithEnum = faceExpressionCounts.map(
+        (count) => ({
+          ...count,
+          attributeId: FaceExpressionsEnum[count.attributeId],
+        }),
+      );
+
+      const agesCounts = await this.capturesRepository.query(
+        `
+      select "ageGroupId" as "attributeId" , count(*) as count
+        from captures c 
+        where c.timestamp between $1 and $2
+        group by "ageGroupId"
+      `,
+        [new Date(range.startDate), new Date(range.endDate)],
+      );
+      const agesCountsWithEnum = agesCounts.map((count) => ({
+        ...count,
+        attributeId: AgeGroupEnum[count.attributeId],
+      }));
+
+      return {
+        genderCountsWithEnum,
+        faceExpressionCountsWithEnum,
+        agesCountsWithEnum,
+        range,
+      };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+
   async getTotals() {
     const totalCaptures = await this.capturesRepository.count();
-
     return { totalCaptures };
+  }
+
+  async getTotalsByDateRange(range: DateRangeDto) {
+    console.log('range', range);
+    if (range.endDate < range.startDate) {
+      throw new BadRequestException(
+        'End date should be greater than start date',
+      );
+    }
+    try {
+      const totalCaptures = await this.capturesRepository.count({
+        where: {
+          timestamp: Between(
+            new Date(range?.startDate),
+            new Date(range?.endDate),
+          ),
+        },
+      });
+      return { totalCaptures, range };
+    } catch (error) {
+      throw new Error(error.message);
+    }
   }
 }

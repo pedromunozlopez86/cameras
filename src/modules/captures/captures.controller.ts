@@ -44,9 +44,24 @@ export class CapturesController {
 
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
+  @Get('all-counts-by-date-range')
+  getAllCountsByDateRange(@Query() range: DateRangeDto) {
+    console.log('ctrl', range);
+    return this.capturesService.getAllCountsByDateRange(range);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @Get('totals')
   getTotals() {
     return this.capturesService.getTotals();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @Get('totals-by-range')
+  getTotalsByDateRange(@Query() range: DateRangeDto) {
+    return this.capturesService.getTotalsByDateRange(range);
   }
 
   @UseGuards(JwtAuthGuard)
